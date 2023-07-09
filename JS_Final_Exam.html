@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Exam</title>
+    <style>
+        #fixedAmount-value{
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="penalty-jar" placeholder="Enter penalty Value">
+    <button id="btn" onclick="add()">Submit Fixed Amount</button><br>
+        <p id="fixedAmount">Fixed Amount : <span id="fixedAmount-value"></span></p>
+
+    <p id="penalty-Value">penalty Value : <span id="change-value">0</span></p>
+    <button id="add-Penalty" onclick="addValue()">Add penalty</button>
+
+    <table id="penalty-table">
+        <tr>
+           <th id="sr">Sr No.</th>
+           <th id="am">Added Amount</th>
+           <th id="up">Updated penalty Amount</th>
+        </tr>
+
+    </table>
+    <script>
+
+        let penaltyValue = document.getElementById("penalty-jar");
+        let line = document.getElementById("fixedAmount");
+        let penaltyButton = document.getElementById("add-Penalty");
+        let showValue = document.getElementById("fixedAmount-value");
+        let sum = document.getElementById("change-value");
+        let tableP = document.getElementById("penalty-table");
+        function add(){
+            showValue.style.opacity = 1;
+            showValue.innerHTML = penaltyValue.value;
+            penaltyValue.value="";
+        }
+
+        let srNo = document.getElementById("sr");
+        let addedAmt = document.getElementById("am");
+        let updatedPe = document.getElementById("up");
+
+        let count=1;
+        function addValue(){
+            sum.innerHTML = Number(sum.innerHTML) + Number(showValue.innerHTML);
+            srNo.innerHTML = srNo.innerHTML + "<li>" + count +"</li>";
+            count = count+1;
+            addedAmt.innerHTML = addedAmt.innerHTML + "<li>" + Number(showValue.innerHTML) +"</li>"
+            updatedPe.innerHTML = updatedPe.innerHTML + "<li>" + Number(sum.innerHTML) +"</li>"
+        }
+
+    </script>
+</body>
+</html>
